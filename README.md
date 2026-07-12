@@ -27,5 +27,21 @@ This project aim's for two things: trying to replicate the results of the letter
 
 #### Recreation:
 
+The article was not very clear about the nuances of their methods. In particular, the mathematical model of the IGT was not thoroughly explained, so some adaptations had to be made to approximate the reported results. (more on that in the report).
+
+The study used the MNIST dataset to train a neural network (NN) for image classification. The objective was to downscale the input images and evaluate which approach achieved better classification performance.
+
+Their model consisted of using a neuromorphic device, the IGT, to downscale the original image. Then, the resulting image was passed to a NN to classify the image. The goal was to compare the accuracy of a NN under different input types, in this case, with and without the IGT in the downscale process. 
+
+Their results showed that the IGT-based preprocessing preserved information from the original pixels, obtaining an image with richer features and a better retain of the digit shape.
+
 #### Our model:
+
+Building upon the baseline proposed in the article, our group explored with two new approaches: a new type of downscale with the IGT and using reservoir computing to receive the treated image.
+
+The new method of downscale aimed to use the advantages of a neuromorphic device to retain the form of the image. To achieve that, the pulse train logic was changed and rearranged to take pixel blocks of 2x2. This approach produced promising results, allowing the downscaled images to retain the overall shape of the original digits.
+
+One challenge associated with this type of downscale is the introduction of noise. To address this issue, the group used a **gaussian filter** and two IGT devices in the treatment. The resulting images were then subtracted from one another to receive a clear downscaled image.
+
+The second approach was to test the memory properties of the reservoir computing, sending the image as a temporal pulse sequence. This method requires only a single solution of a least-squares problem during training and seeks to emulate certain aspects of biological information processing observed in the brain.
 
